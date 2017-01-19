@@ -1,0 +1,28 @@
+{
+  "name": "upload",
+  "version": "1.0.0",
+  "description": "Serverless upload to S3",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "uri": "git+ssh://git@github.com/rajwilkhu/ndclondon2017.git"
+  },
+  "keywords": [
+    "serverless",
+    "aws",
+    "lambda"
+  ],
+  "author": "Raj Wilkhu",
+  "license": "MIT",
+  "bugs": {
+    "uri": "https://github.com/rajwilkhu/ndclondon2017/issues"
+  },
+  "homepage": "https://github.com/rajwilkhu/ndclondon2017#readme",
+  "dependencies": {
+    "aws-sdk": "^2.7.21",
+    "bluebird": "^3.4.7"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "Records": [
+    {
+      "eventVersion": "2.0",
+      "eventSource": "aws:s3",
+      "awsRegion": "us-east-1",
+      "eventTime": "2017-01-15T15:28:36.835Z",
+      "eventName": "ObjectCreated:Put",
+      "userIdentity": {
+        "principalId": "AWS:AROAJXANNTOLTZSYBZWQQ:ndc-dev-upload-uri-creator"
+      },
+      "requestParameters": {
+        "sourceIPAddress": "92.232.43.98"
+      },
+      "responseElements": {
+        "x-amz-request-id": "9A054C369528533F",
+        "x-amz-id-2": "pok+knZgYjRmE/ZJi1R7J6rnPKEm5tMV4AU7ieRnTvILS27stqlYWCfVoEq2X5RjC05LptnMTUw="
+      },
+      "s3": {
+        "s3SchemaVersion": "1.0",
+        "configurationId": "620605b6-992a-4664-984d-fc1f9836dafb",
+        "bucket": {
+          "name": "ndc-dev-uploaded-images",
+          "ownerIdentity": {
+            "principalId": "A39AMQ84NMEC2T"
+          },
+          "arn": "arn:aws:s3:::ndc-dev-uploaded-images"
+        },
+        "object": {
+          "key": "wine-with-background.jpg",
+          "size": 38123,
+          "eTag": "e101a38f5f8f8c560f01b33c53ed9f4b",
+          "sequencer": "00587B9524C8444BD8"
+        }
+      }
+    }
+  ]
+}

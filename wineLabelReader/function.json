@@ -1,0 +1,12 @@
+{
+  "disabled": false,
+  "bindings": [
+    {
+      "name": "wineImages",
+      "type": "blobTrigger",
+      "direction": "in",
+      "path": "wines/{name}",
+      "connection": "ndcwines_STORAGE"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "name": "detector",
+  "version": "1.0.0",
+  "description": "Detects wine bottles in images",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "uri": "git+ssh://git@github.com/rajwilkhu/ndclondon2017.git"
+  },
+  "keywords": [
+    "aws",
+    "rekognition"
+  ],
+  "author": "Raj Wilkhu",
+  "license": "MIT",
+  "bugs": {
+    "uri": "https://github.com/rajwilkhu/ndclondon2017/issues"
+  },
+  "homepage": "https://github.com/rajwilkhu/ndclondon2017#readme",
+  "dependencies": {
+    "aws-sdk": "^2.7.21",
+    "azure-storage": "^1.4.0",
+    "bluebird": "^3.4.7",
+    "node-uuid": "^1.4.7"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "Records": [
+    {
+      "EventSource": "aws:sns",
+      "EventVersion": "1.0",
+      "EventSubscriptionArn": "arn:aws:sns:us-east-1::ndc-dev-labels-detected:67a55c24-4ad8-42d9-bf1c-8e192b4f1a2a",
+      "Sns": {
+        "Type": "Notification",
+        "MessageId": "c7e439bb-ec0f-5bc5-bf72-694204e9a020",
+        "TopicArn": "arn:aws:sns:us-east-1::ndc-dev-labels-detected",
+        "Subject": null,
+        "Message": "{\"bucket\":\"ndc-dev-uploaded-images\",\"key\":\"wine-with-background.jpg\",\"labels\":[{\"Name\":\"Bottle\",\"Confidence\":98.45132446289062},{\"Name\":\"Alcohol\",\"Confidence\":76.54680633544922},{\"Name\":\"Beverage\",\"Confidence\":76.54680633544922},{\"Name\":\"Red Wine\",\"Confidence\":76.54680633544922},{\"Name\":\"Wine\",\"Confidence\":76.54680633544922}]}",
+        "Timestamp": "2017-01-18T22:05:26.959Z",
+        "SignatureVersion": "1",
+        "Signature": "JsabBI8OjdTjLXdJwhuqK5XRq6KUxw7q/yn5ONXAn/dytXD6vlKYoVYQx96zd6OPo4GK3VccArCmhyWoJzoG7f64MR2kFSKklfq2dFgKRbI9erXb3NP6N6essVT01COm+K24LCDWFnw6lCvJ/RUP0DT5NcTs5EgquhlVYqFBJ6/OtlhJoHH6q0bRCOsEioEudyWCt3FEUKfe445YxoUwK11dDbcGi6rScopwUR1XAZtyhD2udkyO41xsab6f8Bh2rJ4EIkuIWM1EMJQzjmuI6u5zoXGLkvZP6Eyws1pRYPhJSKYvJrDsOQyTxoffKHcghLATo8CPeBmGmHf5cuHHOQ==",
+        "SigningCertUrl": "https://sns.us-east-1.amazonaws.com/SimpleNotificationService-b95095beb82e8f6a046b3aafc7f4149a.pem",
+        "UnsubscribeUrl": "https://sns.us-east-1.amazonaws.com/?Action=Unsubscribe&SubscriptionArn=arn:aws:sns:us-east-1:804627717592:ndc-dev-labels-detected:67a55c24-4ad8-42d9-bf1c-8e192b4f1a2a",
+        "MessageAttributes": {}
+      }
+    }
+  ]
+}

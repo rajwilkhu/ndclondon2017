@@ -1,0 +1,66 @@
+# Welcome to Serverless!
+#
+# This file is the main config file for your service.
+# It's very minimal at this point and uses default values.
+# You can always add more config options for more control.
+# We've included some commented out config examples here.
+# Just uncomment any of them to get that config option.
+#
+# For full config options, check the docs:
+#    docs.serverless.com
+#
+# Happy Coding!
+
+service: uploads
+
+# You can pin your service to only deploy with a specific Serverless version
+# Check out our docs for more details
+# frameworkVersion: "=X.X.X"
+
+provider:
+  name: aws
+  runtime: nodejs4.3
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - s3:GetObject
+        - s3:PutObject
+        - s3:DeleteObject
+        - s3:ListBucket
+        - s3:GetObjectTagging
+      Resource: arn:aws:s3:::ndc-${opt:stage}-uploaded-images/*
+
+# you can define service wide environment variables here
+#  environment:
+#    variable1: value1
+
+# you can add packaging information here
+#package:
+#  include:
+#    - include-me.js
+#    - include-me-dir/**
+#  exclude:
+#    - exclude-me.js
+#    - exclude-me-dir/**
+
+functions:
+  signedUriCreator:
+    name: ndc-${opt:stage}-upload-uri-creator
+    handler: handler.create
+    events:
+      - http:
+          path: signed-uris
+          method: post
+          cors: true
+    environment:
+      bucket: ndc-${opt:stage}-uploaded-images
+  listUploads:
+      name: ndc-${opt:stage}-uploads-get
+      handler: handler.get
+      events:
+        - http:
+            path: uploads
+            method: get
+            cors: true
+      environment:
+        bucket: ndc-${opt:stage}-uploaded-images

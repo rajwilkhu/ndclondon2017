@@ -1,0 +1,86 @@
+# Welcome to Serverless!
+#
+# This file is the main config file for your service.
+# It's very minimal at this point and uses default values.
+# You can always add more config options for more control.
+# We've included some commented out config examples here.
+# Just uncomment any of them to get that config option.
+#
+# For full config options, check the docs:
+#    docs.serverless.com
+#
+# Happy Coding!
+
+service: scanner
+
+# You can pin your service to only deploy with a specific Serverless version
+# Check out our docs for more details
+# frameworkVersion: "=X.X.X"
+
+provider:
+  name: aws
+  runtime: nodejs4.3
+  memorySize: 128
+  timeout: 90
+
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - s3:GetObject
+        - s3:PutObject
+        - s3:DeleteObject
+        - s3:ListBucket
+        - s3:putObjectTagging
+      Resource: arn:aws:s3:::ndc-${opt:stage}-uploaded-images/*
+    - Effect: Allow
+      Action:
+        - sns:Publish
+        - sns:Subscribe
+      Resource: arn:aws:sns:${opt:region}:${env:AWS_ACCOUNT}:ndc-${opt:stage}-labels-detected
+    - Effect: Allow
+      Action:
+        - rekognition:*
+      Resource: '*'
+
+functions:
+  imageScanner:
+    name: ndc-${opt:stage}-image-scanner
+    handler: handler.scanImage
+    events:
+      - s3: ndc-${opt:stage}-uploaded-images
+    environment:
+      topic: arn:aws:sns:${opt:region}:${env:AWS_ACCOUNT}:ndc-${opt:stage}-labels-detected
+  tagger:
+    name: ndc-${opt:stage}-tagger
+    handler: handler.tag
+    events:
+      - sns: ndc-${opt:stage}-labels-detected
+  labelScanner:
+      name: ndc-${opt:stage}-label-scanner
+      handler: handler.scanLabel
+      events:
+        - sns: ndc-${opt:stage}-labels-detected
+      environment:
+        labelScannerUri: https://wine-label-reader.azurewebsites.net/api/createSignedBlobUri
+        labelScannerApiKey: ${env:LABEL_SCANNER_KEY}
+        labelScannerContainer: wines
+
+
+resources:
+  Resources:
+    S3BucketNdcdevuploadedimages:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: ndc-${opt:stage}-uploaded-images
+        AccessControl: PublicRead
+        CorsConfiguration:
+          CorsRules:
+          - AllowedMethods:
+            - GET
+            - PUT
+            - POST
+            - HEAD
+            AllowedOrigins:
+            - "*"
+            AllowedHeaders:
+            - "*"
