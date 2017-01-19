@@ -32,7 +32,7 @@
         "functionAppName": "[concat(parameters('appName'), '-', parameters('environment'))]",
         "hostingPlanName": "[parameters('appName')]",
         "storageAccountName": "[concat(uniquestring(resourceGroup().id), 'azfunctions')]",
-        "imagesStorageAccountName": "[concat('ndcwines-', parameters('environment'))]",
+        "imagesStorageAccountName": "[concat('ndcwines', parameters('environment'))]",
         "storageAccountid": "[concat(resourceGroup().id,'/providers/','Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]"
     },
     "resources": [
